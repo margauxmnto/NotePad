@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!-- TODO remplacer les valeurs en dur du texte-->
+
+    <EditText
+        android:id="@+id/editTextTitre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titre de la note" />
+
+    <EditText
+        android:id="@+id/editTextContenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextTitre"
+        android:gravity="top"
+        android:hint="Texte de la note"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+android:gravity="center"
+        >
+
+
+        <Button
+            android:id="@+id/bouttonOk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:text="ok"
+            />
+
+        <Button
+            android:id="@+id/bouttonAnnuler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:text="Annuler"
+
+            />
+    </LinearLayout>
+
+</RelativeLayout>
