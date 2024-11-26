@@ -40,6 +40,11 @@ class MainActivity : AppCompatActivity(), NoteAdapter.AdapterListner {
 
     }
 
+    fun refreshNoteList() {
+        val notes = db.loadNotes()
+        noteAdapter.updateNotes(notes)
+    }
+
     /**
      * Action du Boutton flottant + de l'activité pricipale
      * création d'un objet listner implémantant la méthode
@@ -73,9 +78,9 @@ class MainActivity : AppCompatActivity(), NoteAdapter.AdapterListner {
         val listener = object : UpDateNoteDialog.ContactDialogListener {
             override fun onNoteUpDated(updatedNote: Note) {
                 // Mettre à jour la note dans la base de données
-                NotesDB.upDateNote(updatedNote)
+                db.upDateNote(updatedNote)
                 // Rafraîchir la liste des notes
-                loadNotes()
+                refreshNoteList()
             }
         }
         val dialog = UpDateNoteDialog(listener, note)
