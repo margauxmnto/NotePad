@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 /**
  * l'activité principale l'application NotePad
- * @author GHILAS Hamza pour évaluation des étudiant dans la
+ * @author GHILAS Hamza pour évaluation des étudiants dans la
  * matière Programmation Mobile
  *
  */
@@ -68,13 +68,17 @@ class MainActivity : AppCompatActivity(), NoteAdapter.AdapterListner {
      * recharger la liste de Note et mettre à jour l'affichage
      * puis instancie la boite de dialogue et l’affiche
      */
+
     override fun upDateNote(note: Note) {
-        val listner = object : UpDateNoteDialog.ContactDialogListener {
-            override fun onNoteUpDated(note: Note) {
-                TODO("Not yet implemented")
+        val listener = object : UpDateNoteDialog.ContactDialogListener {
+            override fun onNoteUpDated(updatedNote: Note) {
+                // Mettre à jour la note dans la base de données
+                NotesDB.upDateNote(updatedNote)
+                // Rafraîchir la liste des notes
+                loadNotes()
             }
         }
-        val dialog = UpDateNoteDialog(listner, note)
+        val dialog = UpDateNoteDialog(listener, note)
         dialog.show(supportFragmentManager, "noteUpDate")
     }
 

@@ -28,14 +28,10 @@ contenu TEXT
         DatabaseUtils.queryNumEntries(readableDatabase, "notes", null).toInt()
 
     fun addNote(titre: String, contenu: String) {
-        val values = ContentValues() // contenneur clé:valeur
-        /** 1 point
-        @TODO modifier les valeurs à insérer: titre et contenu
-         */
-        // insérer "Note" pour le titre juste pour faire tourner l'app.
-        values.put("titre", "Note")  // à modifier
-        // insérer "contenu Note" pour le contenu juste pour faire tourner l'app
-        values.put("contenu", "contenu Note")  // à modifier
+        val values = ContentValues() // conteneur clé:valeur
+        // Modifier les valeurs à insérer : titre et contenu
+        values.put("titre", titre)  // Utiliser le paramètre titre
+        values.put("contenu", contenu)  // Utiliser le paramètre contenu
         writableDatabase.insert("notes", null, values)
     }
 
@@ -43,20 +39,15 @@ contenu TEXT
         val notes = mutableListOf<Note>()
         readableDatabase.rawQuery("SELECT * FROM notes", null).use { cursor ->
             while (cursor.moveToNext()) {
-                /** 1 point
-                 * @TODO complétez la récupération du titre et du contenu à partir du curseur
-                 */
-
                 val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
-                val titre = "Note" // à modifier
-                val contenu = "contenu Note"  // à modifier
+                val titre = cursor.getString(cursor.getColumnIndexOrThrow("titre"))
+                val contenu = cursor.getString(cursor.getColumnIndexOrThrow("contenu"))
                 val note = Note(id, titre, contenu)
                 notes.add(note)
             }
         }
         return notes
     }
-
     fun upDateNote(note: Note) {
         val values = ContentValues() // contenneur clé:valeur
         values.put("titre", note.titre)
@@ -67,10 +58,8 @@ contenu TEXT
     }
 
     fun deleteNote(id: Int) {
-        // @TODO completer avec l'appel de la methode writableDatabase.delete pour supprimer la note ayan l'identifiant id
-        // writableDatabase.delete(...
-       writableDatabase.close()
-
+        writableDatabase.delete("notes", "id = ?", arrayOf(id.toString()))
+        writableDatabase.close()
     }
 
 
