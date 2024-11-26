@@ -21,6 +21,7 @@ class AddNoteDialog(private val listener: ContactDialogListener) : DialogFragmen
         val editTextTitre = dialogView.findViewById<EditText>(R.id.editTextTitre)
         val editTextPhone = dialogView.findViewById<EditText>(R.id.editTextContenu)
         val bouttonOk = dialogView.findViewById<Button>(R.id.bouttonOk)
+        val boutonAnnuler = dialogView.findViewById<Button>(R.id.bouttonAnnuler)
 
         bouttonOk.setOnClickListener {
             val titre = editTextTitre.text.toString()
@@ -30,10 +31,11 @@ class AddNoteDialog(private val listener: ContactDialogListener) : DialogFragmen
             }
             this.dismiss()
         }
-        /**
-         * @TODO : implémenter l'action du boutton Annuler permettant e cacher la boite de dialogue
-         *
-         */
+
+        boutonAnnuler.setOnClickListener {
+            this.dismiss() // Fermer la boîte de dialogue
+        }
+
 
         return builder.create()
     }

@@ -20,20 +20,28 @@ class UpDateNoteDialog(private val listener: ContactDialogListener, var note: No
         val dialogView = layoutInflater.inflate(R.layout.dialog_note, null)
         builder.setView(dialogView)
         builder.setTitle("Modifier Note")
+
         val editTextTitre = dialogView.findViewById<EditText>(R.id.editTextTitre)
-        editTextTitre.setText(note.titre)
+        editTextTitre.setText(note.titre) // Remplir l'EditText avec le titre de la note
         val editTextContenu = dialogView.findViewById<EditText>(R.id.editTextContenu)
-        editTextContenu.setText(note.contenu)
-        val bouttonOk = dialogView.findViewById<Button>(R.id.bouttonOk)
-        /**
-         * @TODO a.	Implémenter l’action du bouton ok permettant de récupérer le titre et le contenu
-         * de la note et d’appeler la méthode listener.onNoteUpDated pour mettre à jour la note. (2 points)
-         */
+        editTextContenu.setText(note.contenu) // Remplir l'EditText avec le contenu de la note
+
+        val boutonOk = dialogView.findViewById<Button>(R.id.bouttonOk)
+
+        // Implémenter l’action du bouton OK
+        boutonOk.setOnClickListener {
+            val titre = editTextTitre.text.toString() // Récupérer le titre
+            val contenu = editTextContenu.text.toString() // Récupérer le contenu
+            if (titre.isNotEmpty() && contenu.isNotEmpty()) {
+                listener.onNoteUpDated(Note(note.id, titre, contenu)) // Appeler la méthode pour mettre à jour la note
+            }
+            this.dismiss() // Fermer le dialogue
+        }
 
         dialogView.findViewById<Button>(R.id.bouttonAnnuler).setOnClickListener {
-            this.dismiss()
-
+            this.dismiss() // Fermer le dialogue si Annuler est cliqué
         }
+
         return builder.create()
     }
 }

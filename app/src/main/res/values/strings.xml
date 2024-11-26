@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">NotePad</string>
-    <string name="titre">Notes</string>
-    <string name="ajouter_bt_text">Ajouter</string>
+        <string name="dialog_add_note_title">Ajouter Note</string>
+        <string name="dialog_edit_note_title">Modifier Note</string>
+        <string name="hint_note_title">Titre de la note</string>
+        <string name="hint_note_content">Texte de la note</string>
+        <string name="button_ok">OK</string>
+        <string name="button_cancel">Annuler</string>
 </resources>

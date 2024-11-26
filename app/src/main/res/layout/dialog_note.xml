@@ -2,13 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!-- TODO remplacer les valeurs en dur du texte-->
 
     <EditText
         android:id="@+id/editTextTitre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Titre de la note" />
+        android:hint="@string/hint_note_title" /> <!-- Utiliser la ressource de chaîne -->
 
     <EditText
         android:id="@+id/editTextContenu"
@@ -16,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextTitre"
         android:gravity="top"
-        android:hint="Texte de la note"
+        android:hint="@string/hint_note_content"
         android:inputType="textMultiLine"
         android:scrollbars="vertical" />
 
@@ -25,26 +24,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-android:gravity="center"
-        >
-
+        android:gravity="center">
 
         <Button
             android:id="@+id/bouttonOk"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="30"
-            android:text="ok"
-            />
+            android:text="@string/button_ok" /> <!-- Utiliser la ressource de chaîne -->
 
         <Button
             android:id="@+id/bouttonAnnuler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="30"
-            android:text="Annuler"
+            android:text="@string/button_cancel" /> <!-- Utiliser la ressource de chaîne -->
 
-            />
     </LinearLayout>
 
 </RelativeLayout>
