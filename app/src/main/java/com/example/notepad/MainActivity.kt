@@ -19,11 +19,13 @@ class MainActivity : AppCompatActivity(), NoteAdapter.AdapterListner {
     private lateinit var adapter: NoteAdapter
     private val db: NotesDB = NotesDB(this)
     private var listNote: MutableList<Note> = mutableListOf()
+    private lateinit var noteAdapter: NoteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         listNote = db.loadNotes()
+
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         adapter = NoteAdapter(listNote, db, this)
@@ -40,10 +42,6 @@ class MainActivity : AppCompatActivity(), NoteAdapter.AdapterListner {
 
     }
 
-    fun refreshNoteList() {
-        val notes = db.loadNotes()
-        noteAdapter.updateNotes(notes)
-    }
 
     /**
      * Action du Boutton flottant + de l'activité pricipale
@@ -80,7 +78,7 @@ class MainActivity : AppCompatActivity(), NoteAdapter.AdapterListner {
                 // Mettre à jour la note dans la base de données
                 db.upDateNote(updatedNote)
                 // Rafraîchir la liste des notes
-                refreshNoteList()
+                reloadNotes()
             }
         }
         val dialog = UpDateNoteDialog(listener, note)
