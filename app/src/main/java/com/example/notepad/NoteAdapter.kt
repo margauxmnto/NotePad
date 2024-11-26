@@ -27,6 +27,7 @@ class NoteAdapter(
         RecyclerView.ViewHolder(itemView) {
         val textviewTitre: TextView = itemView.findViewById(R.id.titre_note_tv)
         val textviewContenu: TextView = itemView.findViewById(R.id.contenu_note_tv)
+        val deleteButton: ImageButton = itemView.findViewById(R.id.deleteButton)
         // val deleteButton: ImageButton = itemView.findViewById(R.id.deleteButton)
 
         init {
@@ -44,7 +45,7 @@ class NoteAdapter(
             }
 
             itemView.setOnClickListener {
-                listener.upDateNote(listNote[adapterPosition])
+                listner.upDateNote(listNote[adapterPosition])
             }
         }
 
