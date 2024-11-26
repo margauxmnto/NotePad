@@ -5,4 +5,5 @@
         <string name="hint_note_content">Texte de la note</string>
         <string name="button_ok">OK</string>
         <string name="button_cancel">Annuler</string>
+        <string name="notepad">notepad</string>
 </resources>
