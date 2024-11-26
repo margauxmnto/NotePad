@@ -30,16 +30,22 @@ class NoteAdapter(
         // val deleteButton: ImageButton = itemView.findViewById(R.id.deleteButton)
 
         init {
-
-            /** 1 points
-             * @TODO : gérer l'action de l'ImageButton en appellant la méthode listner.deleteNote
-             */
-
-            itemView.setOnClickListener() {
-                listner.upDateNote(listNote.get(adapterPosition))
+            // Gérer l'action de l'ImageButton en appelant la méthode listener.deleteNote
+            deleteButton.setOnClickListener {
+                val noteToDelete = listNote[adapterPosition]
+                AlertDialog.Builder(itemView.context)
+                    .setTitle("Supprimer la note")
+                    .setMessage("Êtes-vous sûr de vouloir supprimer cette note ?")
+                    .setPositiveButton("Oui") { _, _ ->
+                        listner.deleteNote(noteToDelete.id) // Appel à la méthode deleteNote
+                    }
+                    .setNegativeButton("Non", null)
+                    .show()
             }
 
-
+            itemView.setOnClickListener {
+                listener.upDateNote(listNote[adapterPosition])
+            }
         }
 
     }

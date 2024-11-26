@@ -30,6 +30,13 @@
             <!-- TODO: ajouter un ImageButon avec un id deleteButton pour la supression d'une note
              - positionner l'ImageButton après le titre de la note
             -->
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="TODO"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/baseline_delete_24"/>
 
         </RelativeLayout>
 
